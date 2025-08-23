@@ -1,0 +1,88 @@
+---
+import Header from '../../components/Header.astro'
+import Layout from '../../layouts/Layout.astro'
+import Sidebar from '../../layouts/Sidebar.astro'
+import Content from '../../layouts/Content.astro'
+import Article from '../../components/Article.astro'
+import Prose from '../../components/Prose.astro'
+import Heading from '../../components/Heading.astro'
+import Text from '../../components/Text.astro'
+import List from '../../components/List.astro'
+import ListItem from '../../components/ListItem.astro'
+---
+
+<Layout title="Who We Are - YOUTHX">
+  <Header />
+  <Sidebar />
+  <Content>
+    <section>
+      <Article>
+        <Heading
+          slot="header"
+          level={1}
+          gradient
+          class="inline-block"
+          text="Who We Are"
+        />
+        <Prose>
+          <Text>
+            <strong>YOUTHX</strong> (YouthX is Open Useful Technologies Hub’s Experiments) 
+            is a collective dedicated to ethical AI research, experimentation, and the creation 
+            of open technologies. We believe that technology must remain free and accessible: 
+            if it is open, it is transparent; if it is open, it belongs to everyone. 
+          </Text>
+        </Prose>
+
+        <Prose>
+          <Heading level={2} text="Our Mission" />
+          <Text>
+            We conduct research in artificial intelligence, develop our own models, and 
+            publish our findings openly to contribute to a culture of shared knowledge. 
+            Our mission is to push the boundaries of technology while keeping freedom, 
+            ethics, and accessibility at the core of everything we do.
+          </Text>
+        </Prose>
+
+        <Prose>
+          <Heading level={2} text="Our Values" />
+          <List>
+            <ListItem>
+              <Text>
+                <strong>Openness</strong>: Technology should be open, transparent, and 
+                accessible to everyone.
+              </Text>
+            </ListItem>
+            <ListItem>
+              <Text>
+                <strong>Ethics</strong>: We prioritize responsible AI research and development 
+                with human values in mind.
+              </Text>
+            </ListItem>
+            <ListItem>
+              <Text>
+                <strong>Collaboration</strong>: Knowledge grows when shared. We publish 
+                research, write articles, and encourage global cooperation. 
+              </Text>
+            </ListItem>
+            <ListItem>
+              <Text>
+                <strong>Experimentation</strong>: We believe progress comes through 
+                curiosity, exploration, and fearless experimentation.
+              </Text>
+            </ListItem>
+          </List>
+        </Prose>
+
+        <Prose>
+          <Heading level={2} text="What We Do" />
+          <Text>
+            From developing AI models to writing scientific articles, we aim to contribute 
+            meaningful research and practical technologies. Our work includes building 
+            open tools, publishing ethical frameworks, and fostering discussions about the 
+            future of artificial intelligence. 
+          </Text>
+        </Prose>
+      </Article>
+    </section>
+  </Content>
+</Layout>
