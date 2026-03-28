@@ -1,0 +1,25 @@
+---
+import { getEntry } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+import Card from '../../components/Card.astro';
+import IconCard from '../../components/IconCard.astro';
+import Table from '../../components/Table.astro';
+
+const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.redirect('/404');
+}
+
+const post = await getEntry('posts', slug);
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await post.render();
+---
+
+<PostLayout frontmatter={post.data}>
+  <Content components={{ Card, IconCard, Table }} />
+</PostLayout>

@@ -1,0 +1,56 @@
+---
+import Header from '../components/Header.astro'
+import Layout from './Layout.astro'
+import Sidebar from './Sidebar.astro'
+import Content from './Content.astro'
+import Article from '../components/Article.astro'
+import Heading from '../components/Heading.astro'
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={`${frontmatter.title} - YOUTHX`}>
+  <Header />
+  <Sidebar />
+  <Content>
+    <section>
+      <Article>
+        <Heading
+          slot="header"
+          level={1}
+          gradient
+          class="inline-block"
+          text={frontmatter.title}
+        />
+        <div class="prose prose-invert prose-brand max-w-none 
+          prose-headings:font-medium prose-p:font-light 
+          prose-a:text-primary hover:prose-a:text-secondary
+          prose-img:rounded-xl">
+          <slot />
+        </div>
+      </Article>
+    </section>
+  </Content>
+</Layout>
+
+<style is:global>
+  /* Base Prose Styles */
+  .prose {
+    --tw-prose-body: var(--ac-gray-200);
+    --tw-prose-headings: var(--ac-white);
+    --tw-prose-lead: var(--ac-gray-300);
+    --tw-prose-links: var(--ac-primary);
+    --tw-prose-bold: var(--ac-white);
+    --tw-prose-counters: var(--ac-gray-400);
+    --tw-prose-bullets: var(--ac-primary);
+    --tw-prose-hr: var(--ac-gray-700);
+    --tw-prose-quotes: var(--ac-white);
+    --tw-prose-quote-borders: var(--ac-primary);
+    --tw-prose-captions: var(--ac-gray-400);
+    --tw-prose-code: var(--ac-white);
+    --tw-prose-pre-code: var(--ac-gray-100);
+    --tw-prose-pre-bg: var(--ac-dark);
+    --tw-prose-th-borders: var(--ac-gray-600);
+    --tw-prose-td-borders: var(--ac-gray-700);
+  }
+</style>
