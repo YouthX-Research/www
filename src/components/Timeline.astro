@@ -1,0 +1,206 @@
+---
+interface TimelineAction {
+  label: string;
+  href: string;
+  download?: string;
+  target?: string;
+  primary?: boolean;
+}
+
+interface TimelineEvent {
+  date: string;
+  badge: string;
+  title: string;
+  location: string;
+  summary: string;
+  details: string[];
+  actions?: TimelineAction[];
+}
+
+const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+const humaArticleUrl = `${base}/posts/breaking-the-syntax-barrier-the-impact-of-native-turkish-programming-language-on-algorithmic-thinking`;
+const certDocxUrl = `${base}/sessionchair_certificate.docx`;
+const certPngUrl = `${base}/sessionchair_certificate.png`;
+const origDocxUrl = `${base}/sessionchair_egehankahraman0@gmail.com.docx`;
+
+const timelineEvents: TimelineEvent[] = [
+  {
+    date: "17 – 20 Ağustos 2026",
+    badge: "Uluslararası Konferans & Akademik Liderlik",
+    title: "ICETOL 2026: A Turkish Grammar-Aware Approach & Oturum Başkanlığı",
+    location: "Bremen, Almanya",
+    summary: "International Conference of Educational Technology and Online Learning (ICETOL 2026) bünyesinde 'A Turkish Grammar-Aware Approach to Introductory Programming' başlıklı araştırma bildirisinin uluslararası akademik heyete sunulması.",
+    details: [
+      "Hüma programlama dilinin anadilde kodlama ve algoritmik düşünme becerileri üzerindeki deneysel etkilerinin uluslararası literatüre sunumu.",
+      "Konferans bilim kurulu tarafından Egehan Kahraman'a tevdi edilen resmi Oturum Başkanlığı (Session Chair) görevi.",
+      "Oturum başkanlığı ve akademik katkılar dolayısıyla takdim edilen resmi Teşekkür Belgesi (Certificate of Appreciation)."
+    ],
+    actions: [
+      { label: "Oturum Başkanlığı Belgesi (.docx)", href: certDocxUrl, download: "sessionchair_certificate.docx", primary: true },
+      { label: "Sertifikayı Görüntüle (PNG)", href: certPngUrl, target: "_blank" },
+      { label: "Orijinal Belge Dosyası (.docx)", href: origDocxUrl, download: "sessionchair_egehankahraman0@gmail.com.docx" },
+      { label: "Bildiri Araştırmasını Oku →", href: humaArticleUrl }
+    ]
+  },
+  {
+    date: "18 Haziran – 3 Temmuz 2026",
+    badge: "Yapay Zekâ Müfredatı & Topluluk Eğitimi",
+    title: "GençTek: Veriden Yapay Zekâya (Veriden Zekâya) Eğitim Programı",
+    location: "GençTek Kahramanmaraş İl Koordinatörlüğü",
+    summary: "Egehan Kahraman tarafından hazırlanan ve bizzat verilen 6 oturumluk (6 saat) kapsamlı, uygulamalı yapay zekâ ve makine öğrenmesi müfredatı.",
+    details: [
+      "Oturum 1 (18 Haziran): Tanışma, Turing Testi, Dartmouth 1956, Zekâ Tanımı ve Yapay Zekânın Temelleri.",
+      "Oturum 2 (19 Haziran): Veri Ön İşleme, Eksik Veri Yönetimi, Normalizasyon, Özellik Mühendisliği ve EDA.",
+      "Oturum 3 (25 Haziran): Makine Öğrenmesi — Denetimli/Denetimsiz Öğrenme, Karar Ağaçları, Regresyon ve Sınıflandırma.",
+      "Oturum 4 (26 Haziran): Derin Öğrenme — Yapay Sinir Ağları (ANN, CNN), Aktivasyon Fonksiyonları ve Geri Yayılım.",
+      "Oturum 5 (2 Temmuz): Doğal Dil İşleme (NLP), Bilgisayarlı Görü (Computer Vision) ve Modern Büyük Dil Modelleri (LLM).",
+      "Oturum 6 (3 Temmuz): Model Eğitimi, Metrik Değerlendirme, Yapay Zekâ Etiği ve Kapanış Projesi."
+    ],
+    actions: [
+      { label: "Müfredat & YouthX Hakkında →", href: `${base}/posts/who-we-are` }
+    ]
+  },
+  {
+    date: "4 – 5 Ekim 2025",
+    badge: "Küresel Hackathon & Coğrafi Veri Bilimi",
+    title: "NASA Space Apps Challenge: Meteorolojik Analiz & Hava Durumu",
+    location: "NASA Global Hackathon",
+    summary: "NASA'nın açık Dünya bilimi (Earth Science) veri setleri, coğrafi harita görselleştirmeleri ve Google Gemini yapay zekâ modelini harmanlayan meteorolojik analiz platformu.",
+    details: [
+      "NASA EarthData EarthAccess API ile atmosferik, sıcaklık ve yağış uydu verilerinin otomatik çekilmesi.",
+      "Cartopy kütüphanesi kullanılarak Türkiye ve çevresini (26°N-45°N, 36°E-42°E) kapsayan meteorolojik harita üretimi.",
+      "Google Gemini API entegrasyonuyla atmosferik verilerin yapay zekâ tarafından anlık yorumlanması ve hava durumu öngörüleri.",
+      "Web uygulaması (Flask/server.py) ve modüler komut satırı aracı (app.py, weather_utils.py, ai_analysis.py) mimarisi."
+    ],
+    actions: [
+      { label: "GitHub Deposu ↗", href: "https://github.com/YouthX-Research/nasa-hackathon", target: "_blank", primary: true }
+    ]
+  },
+  {
+    date: "2025",
+    badge: "Masaüstü Web Teknolojileri",
+    title: "Hilal Browser: Bağımsız Gecko & Material 3 Masaüstü Tarayıcısı",
+    location: "YouthX Açık Kaynak Ekosistemi",
+    summary: "Mozilla Gecko motoru üzerinde Google Material 3 Expressive UI yönergeleriyle inşa edilmiş, gizlilik odaklı ve yerel geliştirici dostu masaüstü tarayıcısı.",
+    details: [
+      "Web standartlarına tam uyumlu modern Gecko rendering motoru.",
+      "Google Material 3 Expressive tasarım diliyle kurgulanmış sade, kullanıcı dostu arayüz.",
+      "Kullanıcı gizliliğini önceleyen izleme koruması ve bağımsız geliştirici araçları."
+    ],
+    actions: [
+      { label: "Hilal Browser GitHub ↗", href: "https://github.com/YouthX-Research/huma-browser", target: "_blank", primary: true }
+    ]
+  },
+  {
+    date: "2025 Başı",
+    badge: "Açık Kaynak Dil Mimarisi & Araştırma",
+    title: "Hüma Programlama Dili: Türkçe Dil Bilgili Kodlama Paradigması",
+    location: "YouthX Research",
+    summary: "Türkçe'nin sondan eklemeli (agglutinative) yapısına ve özne-nesne-yüklem (SOV) dizilimine göre sıfırdan tasarlanan, dil bariyerini kaldıran yüksek seviyeli yerli programlama dili.",
+    details: [
+      "İngilizce bilmeyen genç öğrenicilerin algoritmik düşünceyi kendi anadillerinde hızla içselleştirmesini sağlayan söz dizimi.",
+      "Liselerde öğrencilerle yürütülen uygulamalı denemelerde Python ve C++ öğrenme eğrilerine kıyasla algoritmik kavrama hızında belirgin artış.",
+      "Hüma derleyicisi, standart kitaplıkları, web çalışma ortamı ve VS Code dil desteği.",
+      "Akademik bildiri: 'Breaking the Syntax Barrier: The Impact of Native Turkish Programming Language on Algorithmic Thinking'."
+    ],
+    actions: [
+      { label: "Araştırma Makalesini Oku →", href: humaArticleUrl, primary: true },
+      { label: "Hüma GitHub Organizasyonu ↗", href: "https://github.com/YouthX-Research", target: "_blank" }
+    ]
+  }
+];
+---
+
+<section id="timeline" class="py-16 lg:py-24 border-t border-neutral-300/40 bg-neutral-200/15">
+  <div class="container max-w-4xl flex flex-col gap-12">
+    <div class="flex flex-col gap-3 text-center sm:text-left">
+      <div class="flex items-center gap-2 justify-center sm:justify-start">
+        <span class="px-2.5 py-1 rounded-full text-xs font-medium tracking-wide uppercase bg-primary/10 text-primary border border-primary/20">
+          Kronolojik Takvim & Kilometre Taşları
+        </span>
+      </div>
+      <h2 class="text-neutral-700 text-3xl lg:text-4xl font-medium tracking-tight">
+        YouthX Girişimleri & Gelişmeler
+      </h2>
+      <p class="text-neutral-500 text-base leading-relaxed max-w-2xl">
+        Anadilde kodlama araştırmalarından küresel hackathonlara, yapay zekâ müfredatlarından uluslararası konferans oturum başkanlığına YouthX bünyesinde gerçekleştirilen tüm çalışmaların kronolojik dökümü.
+      </p>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="relative border-l-2 border-neutral-300/60 ml-4 sm:ml-6 pl-6 sm:pl-8 space-y-12">
+      {timelineEvents.map((event) => (
+        <div class="relative group">
+          <!-- Timeline Bullet Point -->
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 border-primary bg-neutral-100 group-hover:scale-125 group-hover:bg-primary transition-all duration-200 shadow-sm" />
+
+          <div class="flex flex-col gap-3 p-6 sm:p-7 rounded-3xl border border-neutral-300/60 bg-neutral-100/90 shadow-sm hover:shadow-md hover:border-primary/40 transition-all duration-300">
+            <!-- Header Row -->
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span class="px-2.5 py-0.5 rounded-full font-mono font-medium text-primary bg-primary/10 border border-primary/20">
+                {event.date}
+              </span>
+              <span class="text-neutral-500 font-medium">
+                {event.location}
+              </span>
+            </div>
+
+            <!-- Title & Badge -->
+            <div class="flex flex-col gap-1 mt-1">
+              <span class="text-xs text-secondary font-medium uppercase tracking-wider">
+                {event.badge}
+              </span>
+              <h3 class="text-xl sm:text-2xl font-medium text-neutral-700 group-hover:text-primary transition-colors">
+                {event.title}
+              </h3>
+            </div>
+
+            <!-- Summary -->
+            <p class="text-sm text-neutral-600 leading-relaxed font-light">
+              {event.summary}
+            </p>
+
+            <!-- Detailed Bullet Points -->
+            <div class="mt-2 pt-3 border-t border-neutral-300/40">
+              <ul class="flex flex-col gap-2 text-xs sm:text-sm text-neutral-500">
+                {event.details.map((detail) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-primary font-bold mt-0.5">•</span>
+                    <span class="leading-relaxed">{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Actions / Links -->
+            {event.actions && event.actions.length > 0 && (
+              <div class="mt-4 pt-4 border-t border-neutral-300/40 flex flex-wrap items-center gap-2.5 text-xs font-medium">
+                {event.actions.map((action) => (
+                  <a
+                    href={action.href}
+                    target={action.target || "_self"}
+                    download={action.download || undefined}
+                    rel={action.target === "_blank" ? "noopener noreferrer" : undefined}
+                    class:list={[
+                      "inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl transition duration-200",
+                      action.primary
+                        ? "bg-primary text-white hover:opacity-90 shadow-sm"
+                        : "border border-neutral-300/80 bg-neutral-200/40 text-neutral-700 hover:border-primary hover:text-primary"
+                    ]}
+                  >
+                    <span>{action.label}</span>
+                    {action.download && (
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                    )}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

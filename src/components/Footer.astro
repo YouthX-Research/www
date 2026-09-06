@@ -5,9 +5,10 @@ const postsUrl = `${base}/posts`;
 const docUrl = `${base}/posts/who-we-are`;
 const humaUrl = `${base}/posts/breaking-the-syntax-barrier-the-impact-of-native-turkish-programming-language-on-algorithmic-thinking`;
 const certDocxUrl = `${base}/sessionchair_certificate.docx`;
+const certPngUrl = `${base}/sessionchair_certificate.png`;
 ---
 
-<footer class="py-12 border-t border-neutral-300/50 bg-neutral-100/40 text-neutral-700">
+<footer class="py-12 border-t border-neutral-300/50 bg-neutral-100 text-neutral-700">
   <div class="container">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
       <!-- Col 1: Brand -->
@@ -21,60 +22,60 @@ const certDocxUrl = `${base}/sessionchair_certificate.docx`;
           <span class="text-2xl font-bold tracking-tight text-neutral-700">YouthX</span>
         </a>
         <p class="text-sm text-neutral-500 leading-relaxed">
-          YouthX is <strong>Open</strong> Useful Technologies Hub’s Experiments. Dedicated to ethical AI, native programming, and open computing technologies.
+          YouthX is <strong>Open</strong> Useful Technologies Hub’s Experiments. Etik yapay zekâ, anadilde programlama ve açık kaynak teknolojiler geliştiren bağımsız araştırma kolektifi.
         </p>
         <div class="flex items-center gap-4 text-sm text-neutral-500 pt-2">
           <a
             href="https://www.instagram.com/youthx_research/"
             target="_blank"
             rel="noopener noreferrer"
-            class="hover:text-primary transition-colors"
+            class="hover:text-primary transition-colors font-medium"
           >
-            Instagram
+            Instagram ↗
           </a>
           <a
             href="https://github.com/YouthX-Research"
             target="_blank"
             rel="noopener noreferrer"
-            class="hover:text-primary transition-colors"
+            class="hover:text-primary transition-colors font-medium"
           >
-            GitHub
+            GitHub ↗
           </a>
         </div>
       </div>
 
-      <!-- Col 2: Founder -->
+      <!-- Col 2: Kurucu / Founder -->
       <div class="flex flex-col gap-3">
-        <h4 class="text-neutral-700 font-medium text-base">Founder</h4>
-        <div class="flex flex-col gap-1.5 text-sm text-neutral-500">
-          <span class="font-medium text-neutral-700">Egehan KAHRAMAN</span>
+        <h4 class="text-neutral-700 font-medium text-base">Kurucu & Lider Araştırmacı</h4>
+        <div class="flex flex-col gap-2 text-sm text-neutral-500">
+          <span class="font-medium text-neutral-700 text-base">Egehan KAHRAMAN</span>
           <a href="https://egehankahraman.vercel.app" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-            egehankahraman.vercel.app ↗
+            🌐 egehankahraman.vercel.app ↗
           </a>
           <a href="https://github.com/vastsea0" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-            GitHub (@vastsea0) ↗
+            🐙 GitHub (@vastsea0) ↗
           </a>
           <a href="https://www.youtube.com/@egehankhrmn" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-            YouTube (@egehankhrmn) ↗
+            📺 YouTube (@egehankhrmn) ↗
           </a>
           <a href="https://www.instagram.com/egehan.dev" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-            Instagram (@egehan.dev) ↗
+            📸 Instagram (@egehan.dev) ↗
           </a>
         </div>
       </div>
 
-      <!-- Col 3: Projects -->
+      <!-- Col 3: Projeler & Girişimler -->
       <div class="flex flex-col gap-3">
-        <h4 class="text-neutral-700 font-medium text-base">Projects & Initiatives</h4>
+        <h4 class="text-neutral-700 font-medium text-base">Projeler & Girişimler</h4>
         <ul class="text-neutral-500 text-sm flex flex-col gap-2">
           <li>
             <a href={humaUrl} class="hover:text-primary transition-colors">
-              Hüma Programming Language
+              Hüma Programlama Dili
             </a>
           </li>
           <li>
             <a href="https://github.com/YouthX-Research/huma-browser" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-              Hilal Browser ↗
+              Hilal Browser (Gecko & M3) ↗
             </a>
           </li>
           <li>
@@ -84,26 +85,32 @@ const certDocxUrl = `${base}/sessionchair_certificate.docx`;
           </li>
           <li>
             <a href={docUrl} class="hover:text-primary transition-colors">
-              "From Data to AI" Curriculum
+              GençTek: Veriden Yapay Zekâya
             </a>
           </li>
         </ul>
       </div>
 
-      <!-- Col 4: Resources & Events -->
+      <!-- Col 4: Belgeler & Kaynaklar -->
       <div class="flex flex-col gap-3">
-        <h4 class="text-neutral-700 font-medium text-base">Resources & Recognition</h4>
+        <h4 class="text-neutral-700 font-medium text-base">Belgeler & Kaynaklar</h4>
         <ul class="text-neutral-500 text-sm flex flex-col gap-2">
-          <li><a href={postsUrl} class="hover:text-primary transition-colors">All Articles</a></li>
-          <li><a href={docUrl} class="hover:text-primary transition-colors">Who We Are</a></li>
+          <li><a href={postsUrl} class="hover:text-primary transition-colors">Tüm Yayınlar & Deneyler</a></li>
+          <li><a href={docUrl} class="hover:text-primary transition-colors">Who We Are (Manifesto)</a></li>
           <li>
-            <a href={certDocxUrl} download="sessionchair_certificate.docx" class="hover:text-primary transition-colors">
-              ICETOL Session Chair Certificate (.docx)
+            <a href={certDocxUrl} download="sessionchair_certificate.docx" class="hover:text-primary transition-colors flex items-center gap-1">
+              <span>ICETOL Oturum Başkanlığı (.docx)</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-mono">İndir</span>
+            </a>
+          </li>
+          <li>
+            <a href={certPngUrl} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
+              Sertifika Belgesi (PNG) ↗
             </a>
           </li>
           <li>
             <a href="https://github.com/YouthX-Research/nasa-hackathon" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-              NASA Hackathon Repository ↗
+              NASA Hackathon Deposu ↗
             </a>
           </li>
         </ul>
@@ -111,8 +118,8 @@ const certDocxUrl = `${base}/sessionchair_certificate.docx`;
     </div>
 
     <div class="pt-6 border-t border-neutral-300/40 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
-      <p>© {new Date().getFullYear()} YouthX Research. All rights reserved.</p>
-      <p>Founder: Egehan Kahraman · Open Science & Technologies</p>
+      <p>© {new Date().getFullYear()} YouthX Research. Tüm hakları saklıdır.</p>
+      <p>Kurucu: Egehan Kahraman · Açık Bilim ve Teknolojiler Ekosistemi</p>
     </div>
   </div>
 </footer>
