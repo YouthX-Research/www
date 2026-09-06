@@ -1,16 +1,21 @@
 ---
-import { Button } from 'free-astro-components'
-import Code from '../components/Code.astro'
-import CTA from '../sections/CTA.astro'
-import Footer from '../components/Footer.astro'
-import Header from '../components/Header.astro'
-import Hero from '../sections/Hero.astro'
-import Intro from '../sections/Intro.astro'
-import Layout from '../layouts/Layout.astro'
-import Sidebar from '../layouts/Sidebar.astro'
+import { Button } from "free-astro-components";
+import Code from "../components/Code.astro";
+import CTA from "../sections/CTA.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Hero from "../sections/Hero.astro";
+import Intro from "../sections/Intro.astro";
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../layouts/Sidebar.astro";
 
-const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
 const startUrl = `${base}/posts/who-we-are`;
+const postsUrl = `${base}/posts`;
+const icetolUrl = `${base}/posts/icetol-2026-konferansi`;
+const courseUrl = `${base}/posts/veriden-yapay-zekaya-kursu`;
+const humaUrl = `${base}/posts/breaking-the-syntax-barrier-the-impact-of-native-turkish-programming-language-on-algorithmic-thinking`;
+const nasaUrl = `${base}/posts/nasa-space-apps-challenge`;
 ---
 
 <Layout title="YouthX">
@@ -20,22 +25,230 @@ const startUrl = `${base}/posts/who-we-are`;
     <Hero
       align="center"
       title="YouthX"
-      description="YouthX is Open Useful Technologies Hub’s Experiments — We are an open community dedicated to experimenting with useful and ethical AI technologies."
+      description="YouthX is Open Useful Technologies Hub’s Experiments — We are an open research collective dedicated to experimenting with useful and ethical AI technologies."
     >
-      <div>
+      <div class="flex items-center gap-3">
         <Button href={startUrl} label="Get started" />
+        <a
+          href={postsUrl}
+          class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium border border-neutral-300/70 hover:border-primary text-neutral-700 hover:text-primary transition duration-200"
+        >
+          Articles
+        </a>
       </div>
       <div>
-        <Code code="echo 'Hello world!'" />
+        <Code code="echo 'Hello world!' " />
       </div>
     </Hero>
+
+    <!-- Gelişmeler & Öne Çıkanlar (Developments) -->
+    <section class="py-12 lg:py-16 border-t border-b border-neutral-300/40">
+      <div class="container flex flex-col gap-8">
+        <div class="flex flex-col gap-2">
+          <span class="text-xs uppercase tracking-widest text-primary font-medium">Son Gelişmeler</span>
+          <h2 class="text-neutral-700 text-3xl font-medium">Akademik Bildiriler & Eğitimler</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- ICETOL 2026 Card -->
+          <a
+            href={icetolUrl}
+            class="group flex flex-col justify-between p-6 rounded-3xl border border-neutral-300/50 bg-neutral-200/30 hover:bg-neutral-200/60 hover:border-primary/50 transition-all duration-300"
+          >
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between text-xs text-neutral-500">
+                <span class="px-2.5 py-0.5 rounded-full border border-primary/30 text-primary font-medium">Konferans</span>
+                <span>17–20 Ağustos 2026</span>
+              </div>
+              <h3 class="text-xl font-medium text-neutral-700 group-hover:text-primary transition-colors">
+                ICETOL 2026: A Turkish Grammar-Aware Approach to Introductory Programming
+              </h3>
+              <p class="text-sm text-neutral-500 leading-relaxed">
+                Hüma programlama dili araştırmamızın uluslararası sunumu ve konferansta üstlenilen Session Chair (Oturum Başkanlığı) görevi.
+              </p>
+            </div>
+            <span class="mt-4 text-xs text-primary font-medium flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Detayları incele →
+            </span>
+          </a>
+
+          <!-- Veriden Yapay Zekaya Card -->
+          <a
+            href={courseUrl}
+            class="group flex flex-col justify-between p-6 rounded-3xl border border-neutral-300/50 bg-neutral-200/30 hover:bg-neutral-200/60 hover:border-primary/50 transition-all duration-300"
+          >
+            <div class="flex flex-col gap-3">
+              <div class="flex items-center justify-between text-xs text-neutral-500">
+                <span class="px-2.5 py-0.5 rounded-full border border-secondary/40 text-secondary font-medium">Kurs & Müfredat</span>
+                <span>6 Oturum · GençTek</span>
+              </div>
+              <h3 class="text-xl font-medium text-neutral-700 group-hover:text-primary transition-colors">
+                Veriden Yapay Zekâya: Uygulamalı Eğitim Programı
+              </h3>
+              <p class="text-sm text-neutral-500 leading-relaxed">
+                Egehan Kahraman tarafından verilen, veri ön işlemeden makine öğrenmesi, derin öğrenme ve NLP modellerine uzanan kapsamlı yapay zekâ eğitimi.
+              </p>
+            </div>
+            <span class="mt-4 text-xs text-secondary font-medium flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Müfredatı incele →
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- YouthX Altında Geliştirilen Projeler -->
+    <section class="py-12 lg:py-20">
+      <div class="container flex flex-col gap-10">
+        <div class="flex flex-col gap-2">
+          <span class="text-xs uppercase tracking-widest text-primary font-medium">Açık Kaynak Ekosistemi</span>
+          <h2 class="text-neutral-700 text-3xl lg:text-4xl font-medium">YouthX Altında Geliştirilen Projeler</h2>
+          <p class="text-neutral-500 text-base max-w-2xl">
+            Öğrenimi hızlandıran yerel dillerden bağımsız tarayıcılara ve uzay veri bilimi araçlarına kadar açık teknolojiler üretiyoruz.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Hüma -->
+          <a
+            href={humaUrl}
+            class="group flex flex-col justify-between p-6 rounded-3xl border border-neutral-300/40 bg-neutral-200/20 hover:bg-neutral-200/50 hover:border-primary/40 transition-all duration-300"
+          >
+            <div class="flex flex-col gap-3">
+              <span class="text-xs text-primary font-medium">Programlama Dili</span>
+              <h3 class="text-lg font-medium text-neutral-700 group-hover:text-primary transition-colors">
+                Hüma Programlama Dili
+              </h3>
+              <p class="text-xs text-neutral-500 leading-relaxed">
+                Türkçe dil bilgisi ve sondan eklemeli söz dizimiyle kodlamayı kolaylaştıran yerli programlama dili.
+              </p>
+            </div>
+            <span class="mt-4 text-xs text-primary font-medium">Makaleyi oku →</span>
+          </a>
+
+          <!-- Hilal Browser -->
+          <a
+            href="https://github.com/YouthX-Research/huma-browser"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex flex-col justify-between p-6 rounded-3xl border border-neutral-300/40 bg-neutral-200/20 hover:bg-neutral-200/50 hover:border-primary/40 transition-all duration-300"
+          >
+            <div class="flex flex-col gap-3">
+              <span class="text-xs text-primary font-medium">M3 Web Tarayıcısı</span>
+              <h3 class="text-lg font-medium text-neutral-700 group-hover:text-primary transition-colors">
+                Hilal Browser
+              </h3>
+              <p class="text-xs text-neutral-500 leading-relaxed">
+                Gecko motoru ve Material 3 Expressive UI üzerine inşa edilmiş bağımsız, gizlilik odaklı modern masaüstü tarayıcısı.
+              </p>
+            </div>
+            <span class="mt-4 text-xs text-primary font-medium">GitHub Deposu ↗</span>
+          </a>
+
+          <!-- NASA Space Apps -->
+          <a
+            href={nasaUrl}
+            class="group flex flex-col justify-between p-6 rounded-3xl border border-neutral-300/40 bg-neutral-200/20 hover:bg-neutral-200/50 hover:border-primary/40 transition-all duration-300"
+          >
+            <div class="flex flex-col gap-3">
+              <span class="text-xs text-primary font-medium">Uzay & Veri Bilimi</span>
+              <h3 class="text-lg font-medium text-neutral-700 group-hover:text-primary transition-colors">
+                NASA Space Apps Challenge
+              </h3>
+              <p class="text-xs text-neutral-500 leading-relaxed">
+                NASA EarthData uydu verileri ve Google Gemini AI entegrasyonu ile geliştirilen meteorolojik analiz sistemi.
+              </p>
+            </div>
+            <span class="mt-4 text-xs text-primary font-medium">Proje detayları →</span>
+          </a>
+
+          <!-- GençTek Kursları -->
+          <a
+            href={courseUrl}
+            class="group flex flex-col justify-between p-6 rounded-3xl border border-neutral-300/40 bg-neutral-200/20 hover:bg-neutral-200/50 hover:border-primary/40 transition-all duration-300"
+          >
+            <div class="flex flex-col gap-3">
+              <span class="text-xs text-primary font-medium">Yapay Zekâ Eğitimi</span>
+              <h3 class="text-lg font-medium text-neutral-700 group-hover:text-primary transition-colors">
+                GençTek AI Kursları
+              </h3>
+              <p class="text-xs text-neutral-500 leading-relaxed">
+                GençTek bünyesinde verilen "Veriden Yapay Zekâya" 6 oturumluk uygulamalı makine öğrenmesi ve veri bilimi müfredatı.
+              </p>
+            </div>
+            <span class="mt-4 text-xs text-primary font-medium">Müfredat planı →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kurucu (Founder) Bölümü -->
+    <section class="py-12 lg:py-16 border-t border-neutral-300/40 bg-neutral-200/10">
+      <div class="container">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 p-8 rounded-3xl border border-neutral-300/50 bg-neutral-200/30">
+          <div class="flex flex-col gap-3 max-w-xl">
+            <span class="text-xs uppercase tracking-widest text-primary font-medium">Kurucu & Lider Araştırmacı</span>
+            <h3 class="text-2xl lg:text-3xl font-medium text-neutral-700">Egehan KAHRAMAN</h3>
+            <p class="text-sm text-neutral-500 leading-relaxed">
+              YouthX Research kurucusu; Hüma programlama dili, Hilal tarayıcısı ve açık yapay zekâ teknolojileri üzerinde çalışan araştırmacı ve yazılım mühendisi.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 text-sm">
+            <a
+              href="https://egehankahraman.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-xl border border-neutral-300 hover:border-primary text-neutral-700 hover:text-primary transition-colors"
+            >
+              Web Sitesi ↗
+            </a>
+            <a
+              href="https://github.com/vastsea0"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-xl border border-neutral-300 hover:border-primary text-neutral-700 hover:text-primary transition-colors"
+            >
+              GitHub ↗
+            </a>
+            <a
+              href="https://www.youtube.com/@egehankhrmn"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-xl border border-neutral-300 hover:border-primary text-neutral-700 hover:text-primary transition-colors"
+            >
+              YouTube ↗
+            </a>
+            <a
+              href="https://www.instagram.com/egehan.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-xl border border-neutral-300 hover:border-primary text-neutral-700 hover:text-primary transition-colors"
+            >
+              Instagram ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <Intro />
+
     <CTA
       align="center"
       title="Freedom. Curiosity. Experimentation."
       description="Discover who we are, why YOUTHX exists, and how we experiment with open and useful technologies for everyone."
     >
-      <Button href={startUrl} label="Get started" />
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <Button href={startUrl} label="Get started" />
+        <a
+          href="https://www.instagram.com/youthx_research/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium border border-neutral-300/70 hover:border-primary text-neutral-700 hover:text-primary transition duration-200"
+        >
+          Instagram'da Takip Et ↗
+        </a>
+      </div>
     </CTA>
   </main>
   <Footer />

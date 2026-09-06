@@ -1,38 +1,116 @@
 ---
-
 const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
 const homeUrl = base ? `${base}/` : "/";
 const postsUrl = `${base}/posts`;
 const docUrl = `${base}/posts/who-we-are`;
 ---
 
-<footer class="py-8 lg:py-12 border-t border-neutral-300/50">
+<footer class="py-12 border-t border-neutral-300/50 bg-neutral-100/40 text-neutral-700">
   <div class="container">
-    <div
-      class="flex flex-col gap-8 lg:flex-row lg:justify-between lg:items-center"
-    >
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <!-- Col 1: Brand -->
       <div class="flex flex-col gap-4">
         <a
           href={homeUrl}
-          class="flex items-center gap-3 text-primary hover:text-secondary transition duration-300 ease-in-out"
+          class="flex items-center gap-2.5 text-primary hover:text-secondary transition duration-300 ease-in-out"
           aria-label="YouthX"
         >
-          <img src={`${base}/logo.png`} alt="YouthX" class="w-10 h-10 rounded-lg object-contain" />
+          <img src={`${base}/logo.png`} alt="YouthX Logo" class="w-9 h-9 rounded-lg object-contain" />
           <span class="text-2xl font-bold tracking-tight text-neutral-700">YouthX</span>
         </a>
-        <p class="text-neutral-500">
-          YouthX is <strong>Open</strong> Useful Technologies Hub’s Experiments
+        <p class="text-sm text-neutral-500 leading-relaxed">
+          YouthX is <strong>Open</strong> Useful Technologies Hub’s Experiments. Dedicated to ethical AI, native programming, and open computing technologies.
         </p>
-      </div>
-      <div class="flex flex-col gap-4 lg:flex-row lg:gap-8">
-        <div class="flex flex-col gap-4">
-          <h4 class="text-neutral-700 text-lg">Resources</h4>
-          <ul class="text-neutral-500 flex flex-col gap-2">
-            <li><a href={docUrl} class="hover:text-primary transition-colors">Documentation</a></li>
-            <li><a href={postsUrl} class="hover:text-primary transition-colors">Articles</a></li>
-          </ul>
+        <div class="flex items-center gap-4 text-sm text-neutral-500 pt-2">
+          <a
+            href="https://www.instagram.com/youthx_research/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-primary transition-colors"
+          >
+            Instagram
+          </a>
+          <a
+            href="https://github.com/YouthX-Research"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-primary transition-colors"
+          >
+            GitHub
+          </a>
         </div>
       </div>
+
+      <!-- Col 2: Founder -->
+      <div class="flex flex-col gap-3">
+        <h4 class="text-neutral-700 font-medium text-base">Founder</h4>
+        <div class="flex flex-col gap-1.5 text-sm text-neutral-500">
+          <span class="font-medium text-neutral-700">Egehan KAHRAMAN</span>
+          <a href="https://egehankahraman.vercel.app" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
+            egehankahraman.vercel.app ↗
+          </a>
+          <a href="https://github.com/vastsea0" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
+            GitHub (@vastsea0) ↗
+          </a>
+          <a href="https://www.youtube.com/@egehankhrmn" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
+            YouTube (@egehankhrmn) ↗
+          </a>
+          <a href="https://www.instagram.com/egehan.dev" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
+            Instagram (@egehan.dev) ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 3: Projects -->
+      <div class="flex flex-col gap-3">
+        <h4 class="text-neutral-700 font-medium text-base">Projects & Initiatives</h4>
+        <ul class="text-neutral-500 text-sm flex flex-col gap-2">
+          <li>
+            <a href={`${base}/posts/breaking-the-syntax-barrier-the-impact-of-native-turkish-programming-language-on-algorithmic-thinking`} class="hover:text-primary transition-colors">
+              Hüma Programlama Dili
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/YouthX-Research/huma-browser" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
+              Hilal Browser ↗
+            </a>
+          </li>
+          <li>
+            <a href={`${base}/posts/nasa-space-apps-challenge`} class="hover:text-primary transition-colors">
+              NASA Space Apps Challenge
+            </a>
+          </li>
+          <li>
+            <a href={`${base}/posts/veriden-yapay-zekaya-kursu`} class="hover:text-primary transition-colors">
+              Veriden Yapay Zekâya Kursu
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Resources & Events -->
+      <div class="flex flex-col gap-3">
+        <h4 class="text-neutral-700 font-medium text-base">Resources & Events</h4>
+        <ul class="text-neutral-500 text-sm flex flex-col gap-2">
+          <li><a href={postsUrl} class="hover:text-primary transition-colors">All Articles</a></li>
+          <li><a href={docUrl} class="hover:text-primary transition-colors">Who We Are</a></li>
+          <li>
+            <a href={`${base}/posts/icetol-2026-konferansi`} class="hover:text-primary transition-colors">
+              ICETOL 2026 Konferansı
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/YouthX-Research/nasa-hackathon" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
+              NASA Hackathon Repo ↗
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-neutral-300/40 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
+      <p>© {new Date().getFullYear()} YouthX Research. All rights reserved.</p>
+      <p>Founder: Egehan Kahraman · Open Science & Technologies</p>
     </div>
   </div>
 </footer>
