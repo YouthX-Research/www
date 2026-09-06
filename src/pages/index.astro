@@ -8,6 +8,9 @@ import Hero from '../sections/Hero.astro'
 import Intro from '../sections/Intro.astro'
 import Layout from '../layouts/Layout.astro'
 import Sidebar from '../layouts/Sidebar.astro'
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+const startUrl = `${base}/posts/who-we-are`;
 ---
 
 <Layout title="YouthX">
@@ -17,13 +20,13 @@ import Sidebar from '../layouts/Sidebar.astro'
     <Hero
       align="center"
       title="YouthX"
-      description="YouthX is Open Useful Technologies Hub’s Experiments -We are an open community dedicated to experimenting with useful and ethical AI technologies."
+      description="YouthX is Open Useful Technologies Hub’s Experiments — We are an open community dedicated to experimenting with useful and ethical AI technologies."
     >
       <div>
-        <Button href="/posts/who-we-are" label="Get started" />
+        <Button href={startUrl} label="Get started" />
       </div>
       <div>
-        <Code code="echo 'Hello world!' " />
+        <Code code="echo 'Hello world!'" />
       </div>
     </Hero>
     <Intro />
@@ -32,7 +35,7 @@ import Sidebar from '../layouts/Sidebar.astro'
       title="Freedom. Curiosity. Experimentation."
       description="Discover who we are, why YOUTHX exists, and how we experiment with open and useful technologies for everyone."
     >
-      <Button href="/posts/who-we-are" label="Get started" />
+      <Button href={startUrl} label="Get started" />
     </CTA>
   </main>
   <Footer />

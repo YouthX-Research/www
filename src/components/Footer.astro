@@ -1,5 +1,9 @@
 ---
-import { Icon } from 'free-astro-components'
+
+const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+const homeUrl = base ? `${base}/` : "/";
+const postsUrl = `${base}/posts`;
+const docUrl = `${base}/posts/who-we-are`;
 ---
 
 <footer class="py-8 lg:py-12 border-t border-neutral-300/50">
@@ -7,24 +11,25 @@ import { Icon } from 'free-astro-components'
     <div
       class="flex flex-col gap-8 lg:flex-row lg:justify-between lg:items-center"
     >
-      <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-4">
         <a
-          href="/"
-          class="text-primary hover:text-secondary transition duration-300 ease-in-out"
+          href={homeUrl}
+          class="flex items-center gap-3 text-primary hover:text-secondary transition duration-300 ease-in-out"
           aria-label="YouthX"
         >
-          <Icon icon="star" class="w-10 h-10" />
+          <img src={`${base}/logo.png`} alt="YouthX" class="w-10 h-10 rounded-lg object-contain" />
+          <span class="text-2xl font-bold tracking-tight text-neutral-700">YouthX</span>
         </a>
         <p class="text-neutral-500">
-          YouthX is  <strong> Open</strong> Useful Technologies Hub’s Experiments
+          YouthX is <strong>Open</strong> Useful Technologies Hub’s Experiments
         </p>
       </div>
       <div class="flex flex-col gap-4 lg:flex-row lg:gap-8">
         <div class="flex flex-col gap-4">
           <h4 class="text-neutral-700 text-lg">Resources</h4>
           <ul class="text-neutral-500 flex flex-col gap-2">
-            <li><a href="/posts/who-we-are">Documentation</a></li>
-            {/* <li><a href="/components/button">Components</a></li> */}
+            <li><a href={docUrl} class="hover:text-primary transition-colors">Documentation</a></li>
+            <li><a href={postsUrl} class="hover:text-primary transition-colors">Articles</a></li>
           </ul>
         </div>
       </div>

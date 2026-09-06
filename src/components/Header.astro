@@ -1,6 +1,11 @@
 ---
-import { Icon, ThemeSwitch } from 'free-astro-components'
-import Hamburguer from './Hamburguer.astro'
+import { ThemeSwitch } from "free-astro-components";
+import Hamburguer from "./Hamburguer.astro";
+
+const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+const homeUrl = base ? `${base}/` : "/";
+const postsUrl = `${base}/posts`;
+const docUrl = `${base}/posts/who-we-are`;
 ---
 
 <header
@@ -8,11 +13,12 @@ import Hamburguer from './Hamburguer.astro'
 >
   <div class="container flex justify-between items-center gap-8">
     <a
-      class="text-primary hover:text-secondary text-4xl font-bold leading-none transition duration-300 ease-in-out"
-      href="/"
-      aria-label="Free Astro components"
+      class="flex items-center gap-3 text-primary hover:text-secondary text-4xl font-bold leading-none transition duration-300 ease-in-out"
+      href={homeUrl}
+      aria-label="YouthX"
     >
-      <Icon icon="star" class="w-8 h-8" />
+      <img src={`${base}/logo.png`} alt="YouthX" class="w-8 h-8 rounded-lg object-contain" />
+      <span class="text-xl font-bold tracking-tight text-neutral-700">YouthX</span>
     </a>
 
     <nav>
@@ -20,15 +26,15 @@ import Hamburguer from './Hamburguer.astro'
         <li>
           <a
             class="text-sm hover:text-primary transition duration-300 ease-in-out"
-            href="/posts/who-we-are">Documentation</a
+            href={postsUrl}>Articles</a
           >
         </li>
-        {/* <li class="hidden lg:block">
+        <li>
           <a
             class="text-sm hover:text-primary transition duration-300 ease-in-out"
-            href="/components/button">Articles</a
+            href={docUrl}>Documentation</a
           >
-        </li>*/}
+        </li>
         <li>
           <ThemeSwitch />
         </li>
@@ -41,19 +47,21 @@ import Hamburguer from './Hamburguer.astro'
 </header>
 
 <script>
-  import { DOMLoaded } from '../ts/utils'
+  import { DOMLoaded } from "../ts/utils";
 
   DOMLoaded(() => {
-    const body = document.querySelector('body') as HTMLElement
+    const body = document.querySelector("body") as HTMLElement;
     const hamburguer = document.querySelector(
-      '[data-hamburguer]'
-    ) as HTMLButtonElement
-    const nav = document.querySelector('[data-nav]') as HTMLElement
+      "[data-hamburguer]"
+    ) as HTMLButtonElement | null;
+    const nav = document.querySelector("[data-nav]") as HTMLElement | null;
 
-    hamburguer.addEventListener('click', () => {
-      hamburguer.toggleAttribute('open')
-      nav.toggleAttribute('open')
-      body.classList.toggle('overflow-hidden')
-    })
-  })
+    if (hamburguer && nav && body) {
+      hamburguer.addEventListener("click", () => {
+        hamburguer.toggleAttribute("open");
+        nav.toggleAttribute("open");
+        body.classList.toggle("overflow-hidden");
+      });
+    }
+  });
 </script>

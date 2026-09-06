@@ -5,6 +5,8 @@ import Card from "../../components/Card.astro";
 import IconCard from "../../components/IconCard.astro";
 import Table from "../../components/Table.astro";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   return posts.map((post) => ({

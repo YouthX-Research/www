@@ -1,10 +1,10 @@
 ---
-import Header from '../components/Header.astro'
-import Layout from './Layout.astro'
-import Sidebar from './Sidebar.astro'
-import Content from './Content.astro'
-import Article from '../components/Article.astro'
-import Heading from '../components/Heading.astro'
+import Header from "../components/Header.astro"
+import Layout from "./Layout.astro"
+import Sidebar from "./Sidebar.astro"
+import Content from "./Content.astro"
+import Article from "../components/Article.astro"
+import Heading from "../components/Heading.astro"
 
 const { frontmatter } = Astro.props;
 ---
@@ -22,7 +22,7 @@ const { frontmatter } = Astro.props;
           class="inline-block"
           text={frontmatter.title}
         />
-        <div class="prose prose-invert prose-brand max-w-none 
+        <div class="prose max-w-none 
           prose-headings:font-medium prose-p:font-light 
           prose-a:text-primary hover:prose-a:text-secondary
           prose-img:rounded-xl">
@@ -34,23 +34,23 @@ const { frontmatter } = Astro.props;
 </Layout>
 
 <style is:global>
-  /* Base Prose Styles */
+  /* Adaptive Theme Prose Styles */
   .prose {
-    --tw-prose-body: var(--ac-gray-200);
-    --tw-prose-headings: var(--ac-white);
-    --tw-prose-lead: var(--ac-gray-300);
-    --tw-prose-links: var(--ac-primary);
-    --tw-prose-bold: var(--ac-white);
-    --tw-prose-counters: var(--ac-gray-400);
-    --tw-prose-bullets: var(--ac-primary);
-    --tw-prose-hr: var(--ac-gray-700);
-    --tw-prose-quotes: var(--ac-white);
-    --tw-prose-quote-borders: var(--ac-primary);
-    --tw-prose-captions: var(--ac-gray-400);
-    --tw-prose-code: var(--ac-white);
-    --tw-prose-pre-code: var(--ac-gray-100);
-    --tw-prose-pre-bg: var(--ac-dark);
-    --tw-prose-th-borders: var(--ac-gray-600);
-    --tw-prose-td-borders: var(--ac-gray-700);
+    --tw-prose-body: rgb(var(--ac-color-600));
+    --tw-prose-headings: rgb(var(--ac-color-700));
+    --tw-prose-lead: rgb(var(--ac-color-500));
+    --tw-prose-links: rgb(var(--ac-primary));
+    --tw-prose-bold: rgb(var(--ac-color-700));
+    --tw-prose-counters: rgb(var(--ac-color-400));
+    --tw-prose-bullets: rgb(var(--ac-primary));
+    --tw-prose-hr: rgb(var(--ac-color-300));
+    --tw-prose-quotes: rgb(var(--ac-color-700));
+    --tw-prose-quote-borders: rgb(var(--ac-primary));
+    --tw-prose-captions: rgb(var(--ac-color-400));
+    --tw-prose-code: rgb(var(--ac-color-700));
+    --tw-prose-pre-code: rgb(var(--ac-color-600));
+    --tw-prose-pre-bg: rgb(var(--ac-color-200));
+    --tw-prose-th-borders: rgb(var(--ac-color-300));
+    --tw-prose-td-borders: rgb(var(--ac-color-300));
   }
 </style>
