@@ -3,6 +3,8 @@ const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
 const homeUrl = base ? `${base}/` : "/";
 const postsUrl = `${base}/posts`;
 const docUrl = `${base}/posts/who-we-are`;
+const humaUrl = `${base}/posts/breaking-the-syntax-barrier-the-impact-of-native-turkish-programming-language-on-algorithmic-thinking`;
+const certDocxUrl = `${base}/sessionchair_certificate.docx`;
 ---
 
 <footer class="py-12 border-t border-neutral-300/50 bg-neutral-100/40 text-neutral-700">
@@ -66,8 +68,8 @@ const docUrl = `${base}/posts/who-we-are`;
         <h4 class="text-neutral-700 font-medium text-base">Projects & Initiatives</h4>
         <ul class="text-neutral-500 text-sm flex flex-col gap-2">
           <li>
-            <a href={`${base}/posts/breaking-the-syntax-barrier-the-impact-of-native-turkish-programming-language-on-algorithmic-thinking`} class="hover:text-primary transition-colors">
-              Hüma Programlama Dili
+            <a href={humaUrl} class="hover:text-primary transition-colors">
+              Hüma Programming Language
             </a>
           </li>
           <li>
@@ -76,13 +78,13 @@ const docUrl = `${base}/posts/who-we-are`;
             </a>
           </li>
           <li>
-            <a href={`${base}/posts/nasa-space-apps-challenge`} class="hover:text-primary transition-colors">
-              NASA Space Apps Challenge
+            <a href="https://github.com/YouthX-Research/nasa-hackathon" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
+              NASA Space Apps Challenge ↗
             </a>
           </li>
           <li>
-            <a href={`${base}/posts/veriden-yapay-zekaya-kursu`} class="hover:text-primary transition-colors">
-              Veriden Yapay Zekâya Kursu
+            <a href={docUrl} class="hover:text-primary transition-colors">
+              "From Data to AI" Curriculum
             </a>
           </li>
         </ul>
@@ -90,18 +92,18 @@ const docUrl = `${base}/posts/who-we-are`;
 
       <!-- Col 4: Resources & Events -->
       <div class="flex flex-col gap-3">
-        <h4 class="text-neutral-700 font-medium text-base">Resources & Events</h4>
+        <h4 class="text-neutral-700 font-medium text-base">Resources & Recognition</h4>
         <ul class="text-neutral-500 text-sm flex flex-col gap-2">
           <li><a href={postsUrl} class="hover:text-primary transition-colors">All Articles</a></li>
           <li><a href={docUrl} class="hover:text-primary transition-colors">Who We Are</a></li>
           <li>
-            <a href={`${base}/posts/icetol-2026-konferansi`} class="hover:text-primary transition-colors">
-              ICETOL 2026 Konferansı
+            <a href={certDocxUrl} download="sessionchair_certificate.docx" class="hover:text-primary transition-colors">
+              ICETOL Session Chair Certificate (.docx)
             </a>
           </li>
           <li>
             <a href="https://github.com/YouthX-Research/nasa-hackathon" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
-              NASA Hackathon Repo ↗
+              NASA Hackathon Repository ↗
             </a>
           </li>
         </ul>
