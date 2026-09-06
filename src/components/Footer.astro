@@ -1,33 +1,88 @@
 ---
-import { Icon } from 'free-astro-components'
+import { Icon } from "free-astro-components";
+import { withBase } from "../ts/utils";
+
+const homeUrl = withBase("/");
+const postsUrl = withBase("/posts");
+const missionUrl = withBase("/posts/who-we-are");
 ---
 
-<footer class="py-8 lg:py-12 border-t border-neutral-300/50">
-  <div class="container">
-    <div
-      class="flex flex-col gap-8 lg:flex-row lg:justify-between lg:items-center"
-    >
-      <div class="flex flex-col gap-8">
+<footer class="py-12 lg:py-16 border-t border-neutral-800 bg-neutral-950/60 text-neutral-300">
+  <div class="container mx-auto px-4 md:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 items-start">
+      <div class="flex flex-col gap-4">
         <a
-          href="/"
-          class="text-primary hover:text-secondary transition duration-300 ease-in-out"
-          aria-label="YouthX"
+          href={homeUrl}
+          class="flex items-center gap-3 text-primary hover:text-white transition duration-300"
+          aria-label="YouthX Research"
         >
-          <Icon icon="star" class="w-10 h-10" />
+          <div class="w-9 h-9 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
+            <Icon icon="star" class="w-5 h-5 text-primary" />
+          </div>
+          <span class="font-bold text-xl text-white tracking-tight">YouthX Research</span>
         </a>
-        <p class="text-neutral-500">
-          YouthX is  <strong> Open</strong> Useful Technologies Hub’s Experiments
+        <p class="text-neutral-400 text-sm leading-relaxed max-w-sm">
+          <strong>YouthX</strong> (YouthX is Open Useful Technologies Hub’s Experiments) is an open research collective advancing computational linguistics, ethical AI, and native programming languages.
+        </p>
+        <p class="text-xs text-neutral-500">
+          "If it is open, it belongs to everyone."
         </p>
       </div>
-      <div class="flex flex-col gap-4 lg:flex-row lg:gap-8">
-        <div class="flex flex-col gap-4">
-          <h4 class="text-neutral-700 text-lg">Resources</h4>
-          <ul class="text-neutral-500 flex flex-col gap-2">
-            <li><a href="/posts/who-we-are">Documentation</a></li>
-            {/* <li><a href="/components/button">Components</a></li> */}
-          </ul>
-        </div>
+
+      <div class="flex flex-col gap-3">
+        <h4 class="text-white font-medium text-base">Research & Experiments</h4>
+        <ul class="text-neutral-400 text-sm flex flex-col gap-2">
+          <li>
+            <a href={postsUrl} class="hover:text-primary transition-colors">
+              All Research Publications
+            </a>
+          </li>
+          <li>
+            <a href={withBase("/posts/breaking-the-syntax-barrier-the-impact-of-native-turkish-programming-language-on-algorithmic-thinking")} class="hover:text-primary transition-colors">
+              Hüma Language & Algorithmic Thinking
+            </a>
+          </li>
+          <li>
+            <a href={withBase("/posts/sezi-measuring-evidentiality-in-turkish-large-language-models")} class="hover:text-primary transition-colors">
+              Sezi: Turkish LLM Evidentiality Benchmark
+            </a>
+          </li>
+          <li>
+            <a href={missionUrl} class="hover:text-primary transition-colors">
+              Our Manifesto & Ethics
+            </a>
+          </li>
+        </ul>
       </div>
+
+      <div class="flex flex-col gap-3">
+        <h4 class="text-white font-medium text-base">Open Source Ecosystem</h4>
+        <ul class="text-neutral-400 text-sm flex flex-col gap-2">
+          <li>
+            <a href="https://github.com/YouthX-Research" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">
+              <span>GitHub Organization</span>
+              <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/YouthX-Research/huma-lang" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">
+              <span>Hüma Language Repository</span>
+              <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/YouthX-Research/Sezi" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">
+              <span>Sezi Benchmark Repository</span>
+              <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-neutral-800/60 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
+      <p>© {new Date().getFullYear()} YouthX Research Collective. Open Science & MIT Licensed.</p>
+      <p>Built with Astro & TailwindCSS</p>
     </div>
   </div>
 </footer>

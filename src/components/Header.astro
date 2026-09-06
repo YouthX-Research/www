@@ -1,34 +1,62 @@
 ---
-import { Icon, ThemeSwitch } from 'free-astro-components'
-import Hamburguer from './Hamburguer.astro'
+import { Icon, ThemeSwitch } from "free-astro-components";
+import Hamburguer from "./Hamburguer.astro";
+import { withBase } from "../ts/utils";
+
+const homeUrl = withBase("/");
+const postsUrl = withBase("/posts");
+const missionUrl = withBase("/posts/who-we-are");
 ---
 
 <header
-  class="fixed inset-x-0 top-0 bg-neutral-100/60 text-neutral-700 py-4 border-b border-neutral-300/50 backdrop-blur-md z-20"
+  class="fixed inset-x-0 top-0 bg-neutral-950/70 text-neutral-200 py-3.5 border-b border-neutral-800/80 backdrop-blur-md z-30 transition duration-300"
 >
-  <div class="container flex justify-between items-center gap-8">
+  <div class="container mx-auto px-4 md:px-8 flex justify-between items-center gap-6">
     <a
-      class="text-primary hover:text-secondary text-4xl font-bold leading-none transition duration-300 ease-in-out"
-      href="/"
-      aria-label="Free Astro components"
+      class="group flex items-center gap-2.5 text-primary hover:text-white transition duration-300 ease-in-out"
+      href={homeUrl}
+      aria-label="YouthX Research"
     >
-      <Icon icon="star" class="w-8 h-8" />
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary/30 to-secondary/30 border border-primary/40 flex items-center justify-center group-hover:scale-105 transition-transform">
+        <Icon icon="star" class="w-5 h-5 text-primary" />
+      </div>
+      <div class="flex flex-col">
+        <span class="font-bold text-lg tracking-tight text-white group-hover:text-primary transition-colors">YouthX</span>
+        <span class="text-[10px] text-neutral-400 font-mono leading-none">Research Lab</span>
+      </div>
     </a>
 
     <nav>
-      <ul class="flex items-center gap-8">
+      <ul class="flex items-center gap-6 md:gap-8">
         <li>
           <a
-            class="text-sm hover:text-primary transition duration-300 ease-in-out"
-            href="/posts/who-we-are">Documentation</a
+            class="text-sm text-neutral-300 hover:text-primary transition duration-200"
+            href={postsUrl}
           >
+            Experiments
+          </a>
         </li>
-        {/* <li class="hidden lg:block">
+        <li>
           <a
-            class="text-sm hover:text-primary transition duration-300 ease-in-out"
-            href="/components/button">Articles</a
+            class="text-sm text-neutral-300 hover:text-primary transition duration-200"
+            href={missionUrl}
           >
-        </li>*/}
+            Mission
+          </a>
+        </li>
+        <li class="hidden sm:block">
+          <a
+            class="text-sm text-neutral-300 hover:text-primary flex items-center gap-1.5 transition duration-200"
+            href="https://github.com/YouthX-Research"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>GitHub</span>
+            <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </li>
         <li>
           <ThemeSwitch />
         </li>
@@ -41,19 +69,19 @@ import Hamburguer from './Hamburguer.astro'
 </header>
 
 <script>
-  import { DOMLoaded } from '../ts/utils'
+  import { DOMLoaded } from "../ts/utils";
 
   DOMLoaded(() => {
-    const body = document.querySelector('body') as HTMLElement
-    const hamburguer = document.querySelector(
-      '[data-hamburguer]'
-    ) as HTMLButtonElement
-    const nav = document.querySelector('[data-nav]') as HTMLElement
+    const body = document.querySelector("body") as HTMLElement;
+    const hamburguer = document.querySelector("[data-hamburguer]") as HTMLButtonElement | null;
+    const nav = document.querySelector("[data-nav]") as HTMLElement | null;
 
-    hamburguer.addEventListener('click', () => {
-      hamburguer.toggleAttribute('open')
-      nav.toggleAttribute('open')
-      body.classList.toggle('overflow-hidden')
-    })
-  })
+    if (hamburguer && nav && body) {
+      hamburguer.addEventListener("click", () => {
+        hamburguer.toggleAttribute("open");
+        nav.toggleAttribute("open");
+        body.classList.toggle("overflow-hidden");
+      });
+    }
+  });
 </script>

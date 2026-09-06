@@ -1,0 +1,92 @@
+---
+title: "Sezi: Measuring Evidentiality in Turkish Large Language Models"
+description: "A comprehensive linguistic benchmark evaluating whether frontier LLMs distinguish direct (-di) and indirect (-miş) information access in Turkish."
+publishDate: 2026-04-02
+author: "YouthX Research"
+tags: ["research", "nlp", "llm", "linguistics", "evidentiality", "benchmark"]
+---
+
+**Abstract** — In morphologically rich languages such as Turkish, evidentiality is an obligatory grammatical category that encodes the speaker's source of information. While English marks evidentiality lexically (e.g., *"apparently"*, *"allegedly"*), Turkish encodes it morphosyntactically through the past tense inflectional paradigm: **`-di`** denotes firsthand sensory witness (`DIRECT`), while **`-miş`** denotes hearsay (`REPORTATIVE`) or sensory inference (`INFERENTIAL`). This paper introduces **Sezi**, a balanced evaluation benchmark suite designed to quantify whether Large Language Models possess true epistemic awareness or rely on surface-level statistical co-occurrences.
+
+---
+
+## 1. Theoretical Framework: Information Access
+
+In natural language processing, evidentiality is frequently reduced to a crude binary: *"reliable source → -di, unreliable source → -miş"*. Linguistic theory demonstrates this is incorrect. Evidentiality is fundamentally a matter of **Information Access**:
+
+1. **`DIRECT` (Direct Visual/Sensory Witness):** The speaker directly experienced or witnessed the event take place.
+   - *Target Morpheme:* **`-di`** (e.g., `-di`, `-dı`, `-du`, `-dü`, `-ti`, `-tı`, `-tu`, `-tü`).
+   - *Example:* "Ahmet'in arabaya bindiğini kendi gözlerimle gördüm; Ahmet arabaya **bindi**."
+2. **`REPORTATIVE` (Hearsay / Transferred Information):** The speaker obtained the information from a third party or public rumor.
+   - *Target Morpheme:* **`-miş`** (e.g., `-miş`, `-mış`, `-muş`, `-müş`).
+   - *Example:* "Komşular söylediğine göre, Ahmet dün şehirden **ayrılmış**."
+3. **`INFERENTIAL` (Physical Traces / Resultative Inference):** The speaker did not observe the action, but deduced it from observable physical aftermath.
+   - *Target Morpheme:* **`-miş`**.
+   - *Example:* "Yerdeki taze fren izlerini ve kırılan camları görünce kaza olduğunu anladım; araba ağaca **çarpmış**."
+
+---
+
+## 2. Benchmark Design: The Balanced 3×3 Cellular Matrix
+
+To eliminate positional, lexical, and frequency biases, **Sezi v2.0.0** employs a balanced matrix across 10 semantic domains comprising 36 base scenario templates across 3 distinct task paradigms (**Total: 108 Items**):
+
+<div class="overflow-x-auto my-6">
+  <table class="w-full text-left text-sm border-collapse border border-neutral-800">
+    <thead class="bg-neutral-900 text-neutral-300">
+      <tr>
+        <th class="p-3 border border-neutral-800">Information Access</th>
+        <th class="p-3 border border-neutral-800">Open Cloze</th>
+        <th class="p-3 border border-neutral-800">Constrained Past</th>
+        <th class="p-3 border border-neutral-800">Forced Choice A/B</th>
+      </tr>
+    </thead>
+    <tbody class="text-neutral-400 divide-y divide-neutral-800">
+      <tr>
+        <td class="p-3 font-semibold text-primary border border-neutral-800">DIRECT (-di)</td>
+        <td class="p-3 border border-neutral-800">12 questions</td>
+        <td class="p-3 border border-neutral-800">12 questions</td>
+        <td class="p-3 border border-neutral-800">12 questions</td>
+      </tr>
+      <tr>
+        <td class="p-3 font-semibold text-secondary border border-neutral-800">REPORTATIVE (-miş)</td>
+        <td class="p-3 border border-neutral-800">12 questions</td>
+        <td class="p-3 border border-neutral-800">12 questions</td>
+        <td class="p-3 border border-neutral-800">12 questions</td>
+      </tr>
+      <tr>
+        <td class="p-3 font-semibold text-amber-400 border border-neutral-800">INFERENTIAL (-miş)</td>
+        <td class="p-3 border border-neutral-800">12 questions</td>
+        <td class="p-3 border border-neutral-800">12 questions</td>
+        <td class="p-3 border border-neutral-800">12 questions</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Evaluation Task Types
+- **`OPEN_CLOZE`**: Free generative completion at the sentence boundary to measure unprompted morphological preference.
+- **`CONSTRAINED_PAST`**: Conjugation of a target lemma strictly constrained to past tense modalities.
+- **`FORCED_CHOICE_AB`**: Pairwise discrimination between identical contexts differing solely in `-di` versus `-miş` inflection.
+
+---
+
+## 3. Diagnostic Observations on Frontier Models
+
+Our baseline diagnostic evaluations across leading state-of-the-art architectures revealed critical systemic blind spots:
+
+1. **Direct Bias Phenomenon**: When unprompted, many general LLMs demonstrate a default preference for `-di` across all past contexts, collapsing epistemic nuances.
+2. **Inferential Confusion**: Models struggle disproportionately with `INFERENTIAL` contexts where physical evidence is explicitly described in prior sentences, often erroneously choosing `-di` because physical traces are perceived as direct testimony.
+3. **LoRA Fine-tuning Potential**: Targeted evidentiality instruction tuning using high-quality curated pairs substantially corrects model accuracy without degrading general language generation fluency.
+
+---
+
+## 4. Human Validation and Open Science
+
+The Sezi dataset underwent rigorous human validation with native Turkish linguists and annotators. All test suites, prompt templates, evaluation harnesses, and scoring scripts are freely released under open licenses to foster reproducible Turkish NLP research.
+
+- **Repository**: [github.com/YouthX-Research/Sezi](https://github.com/YouthX-Research/Sezi)
+- **Framework**: Python 3.11+, PyTorch, HuggingFace Transformers, and Apple Silicon MPS evaluation runners.
+
+---
+
+**Keywords:** Turkish NLP, evidentiality, computational linguistics, large language models, benchmark suite, open science, Sezi.

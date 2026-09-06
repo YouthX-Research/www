@@ -1,47 +1,38 @@
 ---
-import Nav from '../components/Nav.astro'
-import NavItem from '../components/NavItem.astro'
-import NavLink from '../components/NavLink.astro'
-import { getCollection } from 'astro:content'
+import Nav from "../components/Nav.astro";
+import NavItem from "../components/NavItem.astro";
+import NavLink from "../components/NavLink.astro";
+import { getCollection } from "astro:content";
+import { withBase } from "../ts/utils";
 
-const { class: className } = Astro.props
+const { class: className } = Astro.props;
 
-const posts = await getCollection('posts');
+const posts = await getCollection("posts");
+posts.sort((a, b) => (b.data.publishDate?.getTime() || 0) - (a.data.publishDate?.getTime() || 0));
 ---
 
 <aside
   data-nav
   class:list={[
-    'fixed left-0 inset-y-0 -translate-x-full [&[open]]:translate-x-0 lg:translate-x-0 w-full lg:w-72 bg-neutral-100/60 backdrop-blur-md pt-16 z-10 transition-transform duration-300 ease-in-out',
+    "fixed left-0 inset-y-0 -translate-x-full [&[open]]:translate-x-0 lg:translate-x-0 w-full lg:w-72 bg-neutral-950/95 lg:bg-neutral-950/80 backdrop-blur-md pt-20 z-20 transition-transform duration-300 ease-in-out",
     className,
   ]}
 >
   <div
-    class="w-full h-full lg:border-r border-neutral-300/50 px-5 py-4 overflow-y-auto"
+    class="w-full h-full border-r border-neutral-800/80 px-5 py-6 overflow-y-auto"
   >
     <Nav>
-      <NavItem title="Experiments" open>
+      <NavItem title="Research & Papers" open>
+        <NavLink href={withBase("/posts")} label="All Publications" />
         {posts.map(post => (
-          <NavLink href={`/posts/${post.slug}`} label={post.data.title} />
+          <NavLink href={withBase(`/posts/${post.slug}`)} label={post.data.title} />
         ))}
       </NavItem>
-      {/*<NavItem title="Components" open>
-        <NavLink href="/components/accordion" label="Accordion" />
-        <NavLink href="/components/button" label="Button" />
-        <NavLink href="/components/checkbox" label="Checkbox" />
-        <NavLink href="/components/icon" label="Icon" />
-        <NavLink href="/components/input" label="Input" />
-        <NavLink href="/components/modal" label="Modal" />
-        <NavLink href="/components/radio" label="Radio" />
-        <NavLink href="/components/select" label="Select" />
-        <NavLink href="/components/switch" label="Switch" />
-        <NavLink href="/components/tab" label="Tab" />
-        <NavLink href="/components/textarea" label="Textarea" />
-        <NavLink href="/components/theme-switch" label="Theme Switch" />
+
+      <NavItem title="Collective" open>
+        <NavLink href={withBase("/posts/who-we-are")} label="Who We Are" />
+        <NavLink href="https://github.com/YouthX-Research" label="GitHub Lab ↗" />
       </NavItem>
-      <NavItem title="Resources" open>
-        <NavLink href="/resources/available-icons" label="Available Icons" />
-      </NavItem>*/}
     </Nav>
   </div>
 </aside>

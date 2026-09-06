@@ -1,30 +1,75 @@
 ---
-import Header from '../components/Header.astro'
-import Layout from './Layout.astro'
-import Sidebar from './Sidebar.astro'
-import Content from './Content.astro'
-import Article from '../components/Article.astro'
-import Heading from '../components/Heading.astro'
+import Header from "../components/Header.astro";
+import Layout from "./Layout.astro";
+import Sidebar from "./Sidebar.astro";
+import Content from "./Content.astro";
+import Article from "../components/Article.astro";
+import Heading from "../components/Heading.astro";
+import { withBase } from "../ts/utils";
 
 const { frontmatter } = Astro.props;
+const formattedDate = frontmatter.publishDate
+  ? new Date(frontmatter.publishDate).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : null;
 ---
 
-<Layout title={`${frontmatter.title} - YOUTHX`}>
+<Layout
+  title={`${frontmatter.title} | YouthX Research`}
+  description={frontmatter.description}
+>
   <Header />
   <Sidebar />
   <Content>
-    <section>
+    <section class="py-4">
+      <div class="mb-6">
+        <a
+          href={withBase("/posts")}
+          class="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-primary transition-colors font-mono"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span>Back to All Experiments</span>
+        </a>
+      </div>
+
       <Article>
-        <Heading
-          slot="header"
-          level={1}
-          gradient
-          class="inline-block"
-          text={frontmatter.title}
-        />
+        <div slot="header" class="flex flex-col gap-4 mb-8">
+          <div class="flex flex-wrap items-center gap-3 text-xs text-neutral-400 font-mono">
+            {formattedDate && <span>{formattedDate}</span>}
+            {formattedDate && <span class="w-1.5 h-1.5 rounded-full bg-primary/60" />}
+            <span class="text-primary/90 font-medium">{frontmatter.author || "YouthX Research"}</span>
+          </div>
+
+          <Heading
+            level={1}
+            gradient
+            class="inline-block text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight"
+            text={frontmatter.title}
+          />
+
+          {frontmatter.tags && frontmatter.tags.length > 0 && (
+            <div class="flex flex-wrap items-center gap-2 pt-1">
+              {frontmatter.tags.map((tag: string) => (
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium border border-primary/20 bg-primary/10 text-primary">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
         <div class="prose prose-invert prose-brand max-w-none 
-          prose-headings:font-medium prose-p:font-light 
-          prose-a:text-primary hover:prose-a:text-secondary
+          prose-headings:font-medium prose-headings:tracking-tight prose-headings:text-white
+          prose-p:font-light prose-p:text-neutral-300 prose-p:leading-relaxed
+          prose-a:text-primary hover:prose-a:text-secondary prose-a:transition-colors
+          prose-code:text-primary prose-code:font-mono prose-code:bg-neutral-900/80 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+          prose-pre:border prose-pre:border-neutral-800 prose-pre:rounded-xl
+          prose-strong:text-white prose-strong:font-semibold
           prose-img:rounded-xl">
           <slot />
         </div>

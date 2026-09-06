@@ -1,38 +1,136 @@
 ---
-import { Button } from 'free-astro-components'
-import Code from '../components/Code.astro'
-import CTA from '../sections/CTA.astro'
-import Footer from '../components/Footer.astro'
-import Header from '../components/Header.astro'
-import Hero from '../sections/Hero.astro'
-import Intro from '../sections/Intro.astro'
-import Layout from '../layouts/Layout.astro'
-import Sidebar from '../layouts/Sidebar.astro'
+import { Button } from "free-astro-components";
+import Code from "../components/Code.astro";
+import CTA from "../sections/CTA.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Hero from "../sections/Hero.astro";
+import Intro from "../sections/Intro.astro";
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../layouts/Sidebar.astro";
+import { withBase } from "../ts/utils";
+
+const experimentsUrl = withBase("/posts");
+const whoWeAreUrl = withBase("/posts/who-we-are");
+const humaPostUrl = withBase("/posts/breaking-the-syntax-barrier-the-impact-of-native-turkish-programming-language-on-algorithmic-thinking");
+const seziPostUrl = withBase("/posts/sezi-measuring-evidentiality-in-turkish-large-language-models");
 ---
 
-<Layout title="YouthX">
+<Layout
+  title="YouthX Research Lab | Open Useful Technologies Hub Experiments"
+  description="Open research collective dedicated to ethical AI experimentation, computational linguistics, and native language programming."
+>
   <Sidebar class="lg:hidden" />
   <Header />
   <main>
     <Hero
       align="center"
-      title="YouthX"
-      description="YouthX is Open Useful Technologies Hub’s Experiments -We are an open community dedicated to experimenting with useful and ethical AI technologies."
+      title="Open Science.<br /><strong>Ethical AI.</strong>"
+      description="YouthX is Open Useful Technologies Hub’s Experiments. We conduct empirical research in computational linguistics, build native language programming environments, and publish open datasets."
     >
-      <div>
-        <Button href="/posts/who-we-are" label="Get started" />
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <Button href={experimentsUrl} label="Explore Research" />
+        <a
+          href={whoWeAreUrl}
+          class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium border border-neutral-700 bg-neutral-900/60 hover:bg-neutral-800 text-neutral-200 transition duration-200"
+        >
+          Our Manifesto
+        </a>
       </div>
-      <div>
-        <Code code="echo 'Hello world!' " />
+      <div class="pt-4 max-w-xl mx-auto">
+        <Code code={"huma run --eval 'yazdır(\"Merhaba Dünya! Bilgi açık olmalı.\")'"} />
       </div>
     </Hero>
+
+    <!-- Featured Experiments Section -->
+    <section class="py-16 md:py-24 border-t border-b border-neutral-800/80 bg-neutral-950/40">
+      <div class="container mx-auto px-4 md:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div class="flex flex-col gap-2">
+            <span class="text-xs uppercase tracking-widest text-primary font-mono font-medium">Research Highlights</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">Active Experiments</h2>
+          </div>
+          <a
+            href={experimentsUrl}
+            class="text-sm text-primary hover:text-white flex items-center gap-1 font-medium transition-colors"
+          >
+            <span>View all publications</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Hüma Experiment Card -->
+          <a
+            href={humaPostUrl}
+            class="group relative flex flex-col justify-between p-8 rounded-3xl border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900/80 hover:border-primary/40 transition-all duration-300"
+          >
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono px-3 py-1 rounded-full border border-primary/20 bg-primary/10 text-primary">
+                  Language & Education
+                </span>
+                <span class="text-xs text-neutral-500 font-mono">YouthX Research</span>
+              </div>
+              <h3 class="text-2xl font-semibold text-white group-hover:text-primary transition-colors">
+                Breaking the Syntax Barrier: Native Turkish Programming Language
+              </h3>
+              <p class="text-neutral-400 text-sm leading-relaxed font-light">
+                An empirical study on how native Turkish grammar, agglutinative morphology, and natural word order impact algorithmic thinking and learning speed in secondary education.
+              </p>
+            </div>
+            <div class="mt-6 flex items-center text-xs text-primary font-medium gap-1 group-hover:translate-x-1 transition-transform">
+              <span>Read research paper</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </div>
+          </a>
+
+          <!-- Sezi Experiment Card -->
+          <a
+            href={seziPostUrl}
+            class="group relative flex flex-col justify-between p-8 rounded-3xl border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900/80 hover:border-primary/40 transition-all duration-300"
+          >
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono px-3 py-1 rounded-full border border-secondary/20 bg-secondary/10 text-secondary">
+                  LLM Evidentiality Benchmark
+                </span>
+                <span class="text-xs text-neutral-500 font-mono">v2.0.0 Suite</span>
+              </div>
+              <h3 class="text-2xl font-semibold text-white group-hover:text-secondary transition-colors">
+                Sezi: Measuring Evidentiality in Turkish Large Language Models
+              </h3>
+              <p class="text-neutral-400 text-sm leading-relaxed font-light">
+                A rigorous computational linguistics benchmark assessing whether Turkish LLMs distinguish direct (-di) from reportative/inferential (-miş) information access across a 3x3 matrix.
+              </p>
+            </div>
+            <div class="mt-6 flex items-center text-xs text-secondary font-medium gap-1 group-hover:translate-x-1 transition-transform">
+              <span>Read benchmark analysis</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <Intro />
+
     <CTA
       align="center"
-      title="Freedom. Curiosity. Experimentation."
-      description="Discover who we are, why YOUTHX exists, and how we experiment with open and useful technologies for everyone."
+      title="Freedom. Curiosity. Open Science."
+      description="Discover who we are, why YouthX exists, and how we experiment with transparent and ethical technologies for humanity."
     >
-      <Button href="/posts/who-we-are" label="Get started" />
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <Button href={whoWeAreUrl} label="Read Our Manifesto" />
+        <a
+          href="https://github.com/YouthX-Research"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium border border-neutral-700 bg-neutral-900/60 hover:bg-neutral-800 text-neutral-200 transition duration-200"
+        >
+          Explore on GitHub
+        </a>
+      </div>
     </CTA>
   </main>
   <Footer />
