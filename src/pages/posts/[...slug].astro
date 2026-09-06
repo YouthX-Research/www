@@ -1,20 +1,23 @@
 ---
-import { getEntry } from 'astro:content';
-import PostLayout from '../../layouts/PostLayout.astro';
-import Card from '../../components/Card.astro';
-import IconCard from '../../components/IconCard.astro';
-import Table from '../../components/Table.astro';
+import { getCollection, getEntry } from "astro:content";
+import PostLayout from "../../layouts/PostLayout.astro";
+import Card from "../../components/Card.astro";
+import IconCard from "../../components/IconCard.astro";
+import Table from "../../components/Table.astro";
 
-const { slug } = Astro.params;
-
-if (!slug) {
-  return Astro.redirect('/404');
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
 }
 
-const post = await getEntry('posts', slug);
+const { slug } = Astro.params;
+const post = Astro.props.post || (slug ? await getEntry("posts", slug) : null);
 
 if (!post) {
-  return Astro.redirect('/404');
+  return Astro.redirect("/404");
 }
 
 const { Content } = await post.render();
