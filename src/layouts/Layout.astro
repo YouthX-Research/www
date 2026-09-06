@@ -1,45 +1,31 @@
 ---
-import { withBase } from "../ts/utils";
-
 interface Props {
-  title: string;
-  description?: string;
+  title: string
 }
 
-const {
-  title,
-  description = "YouthX is Open Useful Technologies Hub’s Experiments — An open collective dedicated to ethical AI, computational linguistics, and native programming research.",
-} = Astro.props;
-
-const pageTitle = title.includes("YouthX") || title.includes("YOUTHX") ? title : `${title} | YouthX Research`;
-const faviconUrl = withBase("/favicon.svg");
+const { title } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
+    <meta
+      name="description"
+      content="We are an open community dedicated to experimenting with useful and ethical AI technologies."
+    />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href={faviconUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-
-    <!-- Open Graph / Meta -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={description} />
+    <title>{title}</title>
   </head>
-  <body class="bg-neutral-900 text-neutral-100 min-h-screen selection:bg-primary/30 selection:text-white">
+  <body>
     <slot />
   </body>
 </html>
 
 <style is:global>
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
   html {
     @apply scroll-smooth;

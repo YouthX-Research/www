@@ -15,7 +15,7 @@ const { title, description, align } = Astro.props
     >
       <div
         class:list={[
-          'flex flex-col gap-16 bg-neutral-100 dark:bg-neutral-900/90 rounded-3xl px-8 lg:px-16 xl:px-24 py-16 lg:py-32',
+          'flex flex-col gap-16 bg-neutral-100 rounded-3xl px-8 lg:px-16 xl:px-24 py-16 lg:py-32',
           align === 'center' ? 'text-center' : '',
         ]}
       >
@@ -24,7 +24,7 @@ const { title, description, align } = Astro.props
             title && (
               <h2
                 class:list={[
-                  'text-neutral-900 dark:text-neutral-100 text-3xl lg:text-4xl [&>strong]:font-medium',
+                  'text-neutral-700 text-3xl lg:text-4xl [&>strong]:font-medium',
                   align === 'center' ? 'mx-auto' : '',
                 ]}
                 set:html={title}
@@ -35,7 +35,7 @@ const { title, description, align } = Astro.props
             description && (
               <p
                 class:list={[
-                  'text-neutral-600 dark:text-neutral-400 lg:text-lg',
+                  'text-neutral-500 lg:text-lg',
                   align === 'center' ? 'mx-auto' : '',
                 ]}
                 set:html={description}
