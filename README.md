@@ -9,3 +9,7 @@ npm run build   # type check + build
 ```
 
 Posts live in `src/content/posts/` as MDX files. The home page lists projects and news in `src/pages/index.astro`.
+
+## License
+
+[GPL-3.0](LICENSE). Part of [YouthX Research](https://github.com/YouthX-Research).
