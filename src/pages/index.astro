@@ -1,76 +1,268 @@
 ---
-import { Button } from 'free-astro-components'
-import Code from '../components/Code.astro'
-import CTA from '../sections/CTA.astro'
-import Footer from '../components/Footer.astro'
-import Header from '../components/Header.astro'
-import Hero from '../sections/Hero.astro'
-import Intro from '../sections/Intro.astro'
-import Timeline from '../components/Timeline.astro'
 import Layout from '../layouts/Layout.astro'
-import Sidebar from '../layouts/Sidebar.astro'
+import Mark from '../components/Mark.astro'
+import Label from '../components/Label.astro'
 
-const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
-const startUrl = `${base}/posts/who-we-are`;
-const postsUrl = `${base}/posts`;
+export const prerender = true
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '')
+const humaPaper = `${base}/posts/breaking-the-syntax-barrier-the-impact-of-native-turkish-programming-language-on-algorithmic-thinking`
+const dm = 'https://ig.me/m/youthx_research'
+const github = 'https://github.com/YouthX-Research'
+
+// Example from the Hüma README, hand-highlighted: keywords, suffixes, numbers, strings.
+const humaExample = `fibonacci <span class="k">fonksiyon olsun</span> n <span class="k">alsın</span> {
+    n &lt;= <span class="n">1</span> <span class="k">ise</span> { n<span class="f">'i</span> <span class="k">döndür</span> }
+    (fibonacci(n - <span class="n">1</span>) + fibonacci(n - <span class="n">2</span>))<span class="f">'yi</span> <span class="k">döndür</span>
+}`
+
+const focus = [
+  {
+    title: 'AI research',
+    text: 'We study applied machine learning and teach it. Our GençTek course took high-school students from raw data to working models in six sessions.',
+    ref: { label: 'Course slides', href: 'https://genctek-sunum.vercel.app' },
+  },
+  {
+    title: 'AI ethics',
+    text: 'What a model was trained on, who it fails, who is accountable when it does. We ask these questions in the same room where we write the code.',
+  },
+  {
+    title: 'Internet freedom',
+    text: 'People should be able to browse without being tracked. Hilal Browser ships with strict privacy profiles, tracker blocking and telemetry turned off.',
+    ref: { label: 'Hilal Browser', href: 'https://hilal-browser.vercel.app' },
+  },
+  {
+    title: 'Open source',
+    text: 'Everything we build is public. Hüma lets Turkish speakers learn programming in their own language, and anyone can read, fork or fix it.',
+    ref: { label: 'Our GitHub', href: github },
+  },
+]
+
+const projects = [
+  {
+    name: 'Hüma',
+    kind: 'Programming language · Rust',
+    since: '2024',
+    text: 'A programming language that follows Turkish grammar. Case suffixes are part of the syntax, so code reads the way you would say it. Interpreter, bytecode VM and a language server.',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/VastSea0/huma-lang' },
+      { label: 'Paper', href: humaPaper },
+    ],
+    code: true,
+  },
+  {
+    name: 'Hilal Browser',
+    kind: 'Web browser · Alpha',
+    since: '2024',
+    text: 'A desktop browser on Firefox ESR. Workspaces in separate containers, three privacy profiles, uBlock Origin built in, Turkish localization.',
+    links: [
+      { label: 'Website', href: 'https://hilal-browser.vercel.app' },
+      { label: 'GitHub', href: 'https://github.com/VastSea0/hilal-browser' },
+    ],
+  },
+  {
+    name: 'Veriden Yapay Zekâya',
+    kind: 'AI course · GençTek',
+    since: '2026',
+    text: 'A 3-week, 6-session applied AI course for high-school students in Kahramanmaraş, part of the MEB YEĞİTEK GençTek program.',
+    links: [{ label: 'Slides', href: 'https://genctek-sunum.vercel.app' }],
+  },
+  {
+    name: 'EarthData weather analysis',
+    kind: 'Hackathon · Python',
+    since: '2025',
+    text: 'Weather analysis on NASA Earth science datasets, built at NASA Space Apps Challenge 2025. A web app and a command-line tool.',
+    links: [{ label: 'GitHub', href: 'https://github.com/YouthX-Research/nasa-hackathon' }],
+  },
+]
+
+const record = [
+  { date: 'Nov 2026', next: true, text: 'NASA Space Apps Challenge, Kahramanmaraş, 14 November.' },
+  {
+    date: 'Aug 2026',
+    text: 'Presented the Hüma paper and chaired a session at ICETOL 2026 in Bremen.',
+    links: [
+      { label: 'Paper', href: humaPaper },
+      { label: 'Certificate', href: `${base}/sessionchair_certificate.png` },
+    ],
+  },
+  { date: 'Jul 2026', text: 'Finished teaching the GençTek applied AI course.' },
+  { date: 'Oct 2025', text: 'Built a weather analysis tool at NASA Space Apps Challenge.' },
+  { date: 'Sep 2024', text: 'Hilal Browser, then Huma Browser, reached the TEKNOFEST Pardus final.' },
+  { date: 'Mar 2024', text: 'First commit of Hüma.' },
+]
+
+const roles = [
+  {
+    title: 'Social media',
+    text: 'Run our Instagram. Turn projects and events into posts and reels people actually stop for.',
+  },
+  {
+    title: 'PR & communications',
+    text: 'Reach schools, press and event organizers. Write announcements and keep our story clear.',
+  },
+  {
+    title: 'Software',
+    text: 'Work on Hüma in Rust, Hilal Browser or new AI tools. Start from an open issue on GitHub.',
+  },
+  {
+    title: 'Volunteers',
+    text: 'Help run workshops, test software, translate, or read drafts before we publish them.',
+  },
+]
 ---
 
-<Layout title="YouthX — Open Useful Technologies Hub's Experiments">
-  <Sidebar class="lg:hidden" />
-  <Header />
-  <main>
-    <!-- Minimalist Hero Section -->
-    <Hero
-      align="center"
-      title="YouthX"
-      description="YouthX is Open Useful Technologies Hub’s Experiments — We are an open research collective dedicated to experimenting with useful and ethical AI technologies."
-    >
-      <div class="flex items-center gap-3">
-        <Button href={startUrl} label="Get started" />
-        <a
-          href={postsUrl}
-          class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-medium border border-neutral-300/70 hover:border-primary text-neutral-700 hover:text-primary transition duration-200"
-        >
-          Articles
-        </a>
+<Layout>
+  <section class="hero">
+    <Mark class="hero-backdrop" />
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="kicker rise" style="--d:0">YouthX Research · Youth eXperiments · Kahramanmaraş · since 2024</p>
+        <h1 class="rise" style="--d:1">Open research for a free internet and accountable&nbsp;AI.</h1>
+        <p class="lead rise" style="--d:2">
+          A youth-led group started by Egehan Kahraman. We build open-source software, teach AI and
+          write about what we learn. We are looking for people to do it with.
+        </p>
+        <div class="actions rise" style="--d:3">
+          <a class="btn btn-solid" href="#join">Join YouthX Research <span aria-hidden="true">→</span></a>
+          <a class="btn" href="#projects">See the projects</a>
+        </div>
       </div>
-      <div>
-        <Code code="echo 'Hello world!'" />
+      <div class="hero-stage" data-tilt>
+        <Mark live class="hero-mark" title="YouthX Research" />
       </div>
-    </Hero>
+    </div>
+    <div class="wrap">
+      <ul class="proof rise" style="--d:4">
+        <li><b>TEKNOFEST</b> Pardus finalist, 2024</li>
+        <li><b>ICETOL</b> paper and session chair, 2026</li>
+        <li><b>NASA Space Apps</b> 2025 and 2026</li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Kronolojik Takvim & Kilometre Taşları (Timeline) -->
-    <Timeline />
-
-    <!-- Temel Değerler (Intro) -->
-    <Intro />
-
-    <!-- Eylem Çağrısı (CTA) -->
-    <CTA
-      align="center"
-      title="Freedom. Curiosity. Experimentation."
-      description="Discover who we are, why YOUTHX exists, and how we experiment with open and useful technologies for everyone."
-    >
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <Button href={startUrl} label="Get started" />
-        <a
-          href="https://www.instagram.com/youthx_research/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium border border-neutral-300/70 hover:border-primary text-neutral-700 hover:text-primary transition duration-200"
-        >
-          Instagram ↗
-        </a>
-        <a
-          href="https://github.com/YouthX-Research"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium border border-neutral-300/70 hover:border-primary text-neutral-700 hover:text-primary transition duration-200"
-        >
-          GitHub Organization ↗
-        </a>
+  <section class="section" id="focus">
+    <div class="wrap">
+      <header class="section-head" data-reveal>
+        <Label>Focus</Label>
+        <h2>What we work on</h2>
+      </header>
+      <div class="focus">
+        {
+          focus.map((f, i) => (
+            <article class="focus-item" data-reveal style={`--d:${i}`}>
+              <h3>{f.title}</h3>
+              <p>{f.text}</p>
+              {f.ref && (
+                <a class="link" href={f.ref.href}>
+                  {f.ref.label}
+                </a>
+              )}
+            </article>
+          ))
+        }
       </div>
-    </CTA>
-  </main>
-  <Footer />
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="wrap">
+      <header class="section-head" data-reveal>
+        <Label>Projects</Label>
+        <h2>Things we've built</h2>
+      </header>
+      <ol class="projects">
+        {
+          projects.map((p) => (
+            <li class:list={['project', { 'has-code': p.code }]} data-reveal>
+              <span class="project-since">{p.since}</span>
+              <div class="project-name">
+                <h3>{p.name}</h3>
+                <span class="project-kind">{p.kind}</span>
+              </div>
+              <p class="project-text">{p.text}</p>
+              <div class="project-links">
+                {p.links.map((l) => (
+                  <a class="link" href={l.href}>
+                    {l.label}
+                  </a>
+                ))}
+              </div>
+              {p.code && (
+                <figure class="code" aria-label="Hüma code example">
+                  <figcaption>
+                    <span>fibonacci.hb</span>
+                    <span>Hüma</span>
+                  </figcaption>
+                  <pre><code set:html={humaExample} /></pre>
+                </figure>
+              )}
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="record">
+    <div class="wrap record-grid">
+      <header class="section-head" data-reveal>
+        <Label>Record</Label>
+        <h2>So far</h2>
+      </header>
+      <ol class="record" data-reveal>
+        {
+          record.map((r) => (
+            <li class:list={{ next: r.next }}>
+              <time>{r.next ? `${r.date} · next` : r.date}</time>
+              <p>
+                {r.text}
+                {r.links?.map((l, i) => (
+                  <>
+                    {i === 0 ? ' ' : ' · '}
+                    <a class="link" href={l.href}>
+                      {l.label}
+                    </a>
+                  </>
+                ))}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section join" id="join">
+    <div class="wrap">
+      <header class="join-head" data-reveal>
+        <Label>Join us</Label>
+        <h2>YouthX Research needs people.</h2>
+        <p>
+          We are students doing this next to school, and there is more work than hands. You don't need
+          experience. You need some free time each week and the habit of finishing what you start.
+        </p>
+      </header>
+      <ul class="roles">
+        {
+          roles.map((r, i) => (
+            <li data-reveal style={`--d:${i}`}>
+              <a class="role" href={dm}>
+                <h3>{r.title}</h3>
+                <p>{r.text}</p>
+                <span class="role-go" aria-hidden="true">→</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="join-foot" data-reveal>
+        <p>Send us a message on Instagram with the role you want and one thing you've made or done.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href={dm}>Message @youthx_research <span aria-hidden="true">→</span></a>
+          <a class="btn" href={github}>Start on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
