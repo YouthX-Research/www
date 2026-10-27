@@ -1,0 +1,52 @@
+---
+// The YouthX mark, redrawn from logo.png: two orbits crossing as an X around a Y.
+// `live` draws the orbits in, rocks them and sends a particle along each one.
+interface Props {
+  live?: boolean
+  class?: string
+  title?: string
+}
+
+const { live = false, class: className, title } = Astro.props
+const uid = `mk${Math.random().toString(36).slice(2, 8)}`
+const orbit = 'M -35 200 A 235 78 0 1 1 435 200 A 235 78 0 1 1 -35 200 Z'
+---
+
+<svg
+  class:list={['mark', className, { 'mark-live': live }]}
+  viewBox="0 0 400 400"
+  fill="none"
+  role={title ? 'img' : undefined}
+  aria-label={title}
+  aria-hidden={title ? undefined : 'true'}
+>
+  <g class="ring ring-a">
+    <g transform="rotate(-45 200 200)">
+      <path id={`${uid}a`} d={orbit} pathLength="1" />
+      {
+        live && (
+          <circle class="particle" r="7">
+            <animateMotion dur="7s" repeatCount="indefinite">
+              <mpath href={`#${uid}a`} />
+            </animateMotion>
+          </circle>
+        )
+      }
+    </g>
+  </g>
+  <g class="ring ring-b">
+    <g transform="rotate(45 200 200)">
+      <path id={`${uid}b`} d={orbit} pathLength="1" />
+      {
+        live && (
+          <circle class="particle" r="5">
+            <animateMotion dur="11s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
+              <mpath href={`#${uid}b`} />
+            </animateMotion>
+          </circle>
+        )
+      }
+    </g>
+  </g>
+  <path class="y" d="M122 128h46l32 52 32-52h46l-56 84v63h-44v-63z" />
+</svg>
