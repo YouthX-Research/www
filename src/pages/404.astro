@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Mark from '../components/Mark.astro'
+
+export const prerender = true
+
+const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '')
+---
+
+<Layout title="Not found · YouthX Research">
+  <div class="wrap lost">
+    <Mark live />
+    <h1>Out of orbit.</h1>
+    <p>This page doesn't exist.</p>
+    <a class="btn" href={`${base}/`}>Back to the home page</a>
+  </div>
+</Layout>
